@@ -33,6 +33,8 @@ ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 
+
+
 @app.route("/")
 def hello():
 	return "Hello World!"
@@ -43,7 +45,7 @@ def allowed_file(filename):
 
 @app.route('/upload', methods=['GET', 'POST'])
 def upload_file():
-	global predicted_image_class
+	predicted_image_class = None
 	if request.method == 'POST':
 		print("request data", request.data)
 		print("request files", request.files)
